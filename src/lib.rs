@@ -19,31 +19,31 @@ pub mod parsers;
 /// A LogOn data spec
 #[derive(Eq,PartialEq,Debug,Clone)]
 pub struct LogOn {
-	pub frame_size: 					u8,
+	pub frame_size: 					u16,
 	pub service_id: 					u8,
-	pub unit_identifier:			Vec<u8>,
-	pub protocol_version: 			Vec<u8>,
-	pub software_version: 			Vec<u8>,
-	pub msg_number: 				Vec<u8>,
-	pub crc: 						Vec<u8>
+	pub unit_identifier:				u32,
+	pub protocol_version: 				u8,
+	pub software_version: 				u32,
+	pub msg_number: 					u8,
+	pub crc: 							u16
 }
 
 /// A Frame data spec
 #[derive(Eq,PartialEq,Debug,Clone)]
 pub struct Frame {
-	pub frame_size: 				Vec<u8>,
-	pub service_id: 				Vec<u8>,
-	pub session_key: 				Vec<u8>,
-	pub payload_length:				Vec<u8>,
+	pub frame_size: 				u16,
+	pub service_id: 				u8,
+	pub session_key: 				u32,
+	pub payload_length:				u32,
 	pub payload: 					Vec<u8>
 }
 
 /// A LogOff data spec
 #[derive(Eq,PartialEq,Debug,Clone)]
 pub struct LogOff {
-	pub frame_size: 			Vec<u8>,
-	pub service_id: 			Vec<u8>,
-	pub session_key:			Vec<u8>
+	pub frame_size: 			u16,
+	pub service_id: 			u8,
+	pub session_key:			u32
 }
 
 /// Parses a LogOn data string.
