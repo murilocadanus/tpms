@@ -4,11 +4,7 @@
 //! They are currently not private, because the need to be accessible,
 //! but are not useful by themselves.
 
-use helper::*;
-
-use std::str;
-
-use nom::{IResult, le_u8, le_u16, le_u32};
+use nom::{le_u8, le_u16, le_u32};
 use super::{LogOn, Frame, LogOff};
 
 named!(pub parse_log_on<LogOn>,
@@ -76,6 +72,7 @@ mod tests {
 				session_key: 269735840, payload_length: 45,
 				payload: "010101F202B1274A56B098D703A0DACB077B07B0274A565900D80000000D13AE0000074E01010F0A640201ABA6".from_hex().unwrap()
 		}));
+		assert!(parse_frame(&"3800".from_hex().unwrap()).is_incomplete());
 	}
 
 	#[test]
@@ -85,5 +82,6 @@ mod tests {
 		assert_eq!(parse_log_off(&hex), IResult::Done(&b""[..], LogOff {
 				frame_size: 7, service_id: 240, session_key: 269735840
 		}));
+		assert!(parse_log_off(&"0700".from_hex().unwrap()).is_incomplete());
 	}
 }

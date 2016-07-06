@@ -2,11 +2,8 @@ extern crate tpms;
 extern crate nom;
 extern crate rustc_serialize;
 
-use nom::IResult;
 use rustc_serialize::hex::FromHex;
-
 use tpms::*;
-use tpms::parsers::*;
 
 #[test]
 fn test_parser() {

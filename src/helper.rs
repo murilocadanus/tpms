@@ -1,3 +1,4 @@
+/*
 use std::str::{FromStr, from_utf8_unchecked};
 
 pub fn to_string(s: &[u8]) -> &str {
@@ -22,3 +23,4 @@ mod tests {
 		assert_eq!(15, buf_to_u8(&b"15"[..]));
 	}
 }
+*/
